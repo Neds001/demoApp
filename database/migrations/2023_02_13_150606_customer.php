@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('lastname');
             $table->string('firstname');
             $table->string('email')->unique();

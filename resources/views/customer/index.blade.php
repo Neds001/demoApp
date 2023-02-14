@@ -24,8 +24,7 @@
   <tbody>
     @foreach($customers as $customer)
     <tr>
-      <th scope="row">1</th>
-    
+      <th scope="row">{{ $customer->id}}</th>
       <td>{{ $customer->firstname }}</td>
       <td>{{ $customer->lastname }}</td>
       <td>{{ $customer->email }}</td>
