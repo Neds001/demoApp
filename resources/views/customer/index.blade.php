@@ -13,6 +13,9 @@
     </tr>
   </thead>
   <tbody>
+  @if(Session::has('success'))
+    {{Session::get('success')}}
+    @endif
     @foreach($customers as $customer)
     <tr>
       <th scope="row">{{ $customer->id}}</th>
@@ -22,7 +25,11 @@
       <td>{{ $customer->contactNumber }}</td>
       <td>{{ $customer->address }}</td>
       <td><button type="button" class="btn btn-primary">Edit</button></td>
-      <td><button type="button" class="btn btn-primary">Delete</button></td>
+      <td>
+        <form action="delete/{{$customer->id}}">
+        <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+    </td>
     </tr>
        @endforeach
   </tbody>
@@ -31,12 +38,13 @@
 <style>
   body{
     background: rgb(122,117,118);
-background: radial-gradient(circle, rgba(122,117,118,1) 0%, rgba(28,32,52,1) 100%);
+    background: radial-gradient(circle, rgba(122,117,118,1) 0%, rgba(28,32,52,1) 100%);
+    color: white;
   }
   h3{
     background: rgb(28,32,52);
 background: radial-gradient(circle, rgba(28,32,52,1) 0%, rgba(122,117,118,1) 100%);
-    text-align: center; 
+    text-align: center;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -46,7 +54,7 @@ background: radial-gradient(circle, rgba(28,32,52,1) 0%, rgba(122,117,118,1) 100
   }
 </style>
 
-   
- 
-      
+
+
+
 
