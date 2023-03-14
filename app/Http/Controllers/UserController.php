@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -53,6 +54,14 @@ class UserController extends Controller
         $req->session()->regenerateToken();
 
         return redirect('login');
+    }
+
+    public function delete($id)
+    {
+        $delete = DB::table("customers")
+        ->where("id", "=", $id)
+        ->delete();
+        return redirect ('/')->with('success', 'customer deleted.');
     }
 
 
