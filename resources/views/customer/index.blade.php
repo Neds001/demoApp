@@ -26,8 +26,9 @@
       <td>{{ $customer->address }}</td>
       <td><button type="button" class="btn btn-primary">Edit</button></td>
       <td>
-        <form action="delete/{{$customer->id}}">
-        <button type="submit" class="btn btn-primary">Delete</button>
+      <a href="delete/{{$customer->id}}">Delete</a>
+        <!--<form action="delete/{{$customer->id}}">
+        <button type="submit" class="btn btn-primary">Delete</button>-->
         </form>
     </td>
     </tr>
