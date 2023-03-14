@@ -10,25 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function login(){
-        return view ('customer.login');
-    }
-
-    public function process(Request $req){
-        $validated = $req->validate([
-            "email"=>['required', 'email'],
-            'password'=>'required'
-        ]);
-
-        if(auth()->attempt($validated)){
-            $req->session()->regenerate();
-
-            return redirect("/");
-        }
-
-
-    }
-
     public function register(){
         return view ('customer.register');
     }
@@ -46,6 +27,23 @@ class UserController extends Controller
 
         return redirect("/");
 
+    }
+
+    public function login(){
+        return view ('customer.login');
+    }
+
+    public function process(Request $req){
+        $validated = $req->validate([
+            "email"=>['required', 'email'],
+            'password'=>'required'
+        ]);
+
+        if(auth()->attempt($validated)){
+            $req->session()->regenerate();
+
+            return redirect("/");
+        }
     }
 
     public function logout(Request $req){
