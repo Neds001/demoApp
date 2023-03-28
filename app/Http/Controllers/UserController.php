@@ -62,6 +62,12 @@ class UserController extends Controller
         return redirect ('/')->with('success', 'customer deleted.');
     }
 
+    public function user()
+    {
+        $data = DB::table("users")->get();
+        return view('customer.user',['users'=>$data]);
+    } 
+
 
 }
 

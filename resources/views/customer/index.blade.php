@@ -24,12 +24,11 @@
       <td>{{ $customer->email }}</td>
       <td>{{ $customer->contactNumber }}</td>
       <td>{{ $customer->address }}</td>
-      <td><button type="button" class="btn btn-primary">Edit</button></td>
+      <td
+      ><a href="edit/{{$customer->id}}">Edit</a>
+      </td>
       <td>
       <a href="delete/{{$customer->id}}">Delete</a>
-        <!--<form action="delete/{{$customer->id}}">
-        <button type="submit" class="btn btn-primary">Delete</button>-->
-        </form>
     </td>
     </tr>
        @endforeach

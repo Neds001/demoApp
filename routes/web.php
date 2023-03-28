@@ -33,5 +33,11 @@ Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/delete/{id}', [UserController::class, 'delete']);
 
+////////
+
+Route::get('/addCustomer',[CustomerController::class, 'addCustomer'])->middleware('auth');
+Route::post('/saveCustomer', [CustomerController::class, 'saveCustomer']);
+Route::get('/edit/{id}', [CustomerController::class, 'edit'])->middleware('auth');
+Route::post('updateCustomer', [CustomerController::class, 'updateCustomer'])->middleware('auth');
 
 
