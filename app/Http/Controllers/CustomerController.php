@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomerController extends Controller
 {
+    public function home()
+    {
+        return view('customer.home');
+    }
+
     public function index()
     {
         $data = DB::table("customers")->get();
@@ -30,13 +35,13 @@ class CustomerController extends Controller
             "address"=>['required','min:4'],
         ]);
         $data=Customer::create($validated);
-        return redirect("/")->with('success', 'A record has been added!');
+        return redirect("/index")->with('success', 'A record has been added!');
     }
 
     public function edit($id){
        $data=Customer::findOrFail($id);
        return view('customer.edit',['customer'=>$data]);
-       return redirect('/')-> with('success', 'A record has been edited successfully!');
+       return redirect('/index')-> with('success', 'A record has been edited successfully!');
     }
 
     public function updateCustomer(Request $req){
@@ -55,10 +60,10 @@ class CustomerController extends Controller
             $data->contactNumber=$req->contactNumber;
             $data->address=$req->address;
             $data->save();
-            return redirect('/')-> with('success', 'A record has been edited successfully!');
+            return redirect('/index')-> with('success', 'A record has been edited successfully!');
 
 
-        
-    
+
+
         }
 }

@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\product;
-use App\Http\Requests\StoreproductRequest;
-use App\Http\Requests\UpdateproductRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+
 
 class ProductController extends Controller
 {
@@ -13,74 +15,20 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function addProduct()
     {
-        //
+        return view ('product.add_product');
+    }
+    public function saveProduct(Request $req)
+    {
+        //@dd($req);
+        $validated = $req->validate([
+            "productName"=>['required','min:4'],
+            "productSerialNumber"=>['required','min:4'],
+        ]);
+        $data=product::create($validated);
+        return redirect("product.productIndex")->with('success', 'A product has been added!');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreproductRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreproductRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateproductRequest  $request
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateproductRequest $request, product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(product $product)
-    {
-        //
-    }
 }

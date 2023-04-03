@@ -25,7 +25,7 @@ class UserController extends Controller
         $validated['password']=Hash::make($validated['password']);
         $user=User::create($validated);
 
-        return redirect("/");
+        return redirect("/login");
 
     }
 
@@ -66,7 +66,7 @@ class UserController extends Controller
     {
         $data = DB::table("users")->get();
         return view('customer.user',['users'=>$data]);
-    } 
+    }
 
 
 }
